@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChatGPT</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Chatbot - ChatGPT API</h1>
+    <h2>Personal Assistant of Kangdong</h2>
+  </header>
+  <main>
+
+  <div class="content">
+    <form method="post" onsubmit="submit.disabled=true">
+      <br>
+      <center><textarea name="question" placeholder="Type something here." rows="4"></textarea></center>
+      <br>
+      <input type="submit" value="Submit" id="submit">
+    </form>
+    <div id="loading"><b>Waiting for response...</b></div>
+  </div>
+  
+
+  <div class="dia">                
+    {% if question %}
+      <div class="result">
+        <div class="question"><b>You:</b>
+          <pre>{{ question }}</pre>
+        </div>
+        <hr>
+        <div class="response"><b>ChatGPT:</b>
+          <pre>{{ res }}</pre>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  </main>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="css/bootstrap.min.css"></script>
+  <script src="static/script.js"></script>
+</body>
+
+</html>
