@@ -1,4 +1,5 @@
 # cache / CSS / JavaScript files
+
 .idea/
 __pycache__/
 css/bootstrap*

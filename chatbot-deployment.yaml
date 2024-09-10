@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-py-flask-openai-api-chatbot-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k8s-py-flask-openai-api-chatbot
+  template:
+    metadata:
+      labels:
+        app: k8s-py-flask-openai-api-chatbot
+    spec:
+      containers:
+      - name: k8s-py-flask-openai-api-chatbot-container
+        image: 54jkd/k8s-py-flask-chatbot:latest
+        ports:
+        - containerPort: 5000
+      imagePullSecrets:
+      - name: k8s-docker-secret-key

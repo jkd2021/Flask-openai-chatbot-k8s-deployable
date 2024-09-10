@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-py-flask-openai-api-chatbot-service
+spec:
+  selector:
+    app: k8s-py-flask-openai-api-chatbot
+  ports:
+  - protocol: TCP
+    port: 5001  # access the k8s service at http://localhost:5001
+    targetPort: 5000
+  type: LoadBalancer  # or NodePort
