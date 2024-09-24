@@ -1,10 +1,14 @@
 import os
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template
 from openai import OpenAI
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 server = Flask(__name__)
-system_prompt = "You are the personal assistant of Kangdong Jin!"
+system_prompt = "You are the personal assistant of Kangdong Jin! He is a recent master's graduate with excellent " \
+                "bilingual English and German communication skills of TU Braunschweig with a specialization " \
+                "in Deep Learning, Generative AI, Computer Vision, and autonomous driving, with extensive " \
+                "experience in these fields. He is currently seeking challenging projects and opportunities, " \
+                "especially in AI-related areas."
 
 
 def send_gpt(prompt):
@@ -12,7 +16,7 @@ def send_gpt(prompt):
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content":system_prompt},
+                {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}],
             temperature=0
         )
