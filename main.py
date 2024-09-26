@@ -1,14 +1,18 @@
-import os
+import json
 from flask import Flask, request, render_template
 from openai import OpenAI
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
 server = Flask(__name__)
-system_prompt = "You are the personal assistant of Kangdong Jin! He is a recent master's graduate with excellent " \
-                "bilingual English and German communication skills of TU Braunschweig with a specialization " \
-                "in Deep Learning, Generative AI, Computer Vision, and autonomous driving, with extensive " \
-                "experience in these fields. He is currently seeking challenging projects and opportunities, " \
-                "especially in AI-related areas."
+
+with open('./config.json') as f:
+    config = json.load(f)
+    OPENAI_API_KEY = config['OPENAI_API_KEY']
+    SYSTEM_PROMPT = config['SYSTEM_PROMPT']
+    print(SYSTEM_PROMPT)
+
+client = OpenAI(api_key=OPENAI_API_KEY)
+system_prompt = SYSTEM_PROMPT
 
 
 def send_gpt(prompt):
@@ -42,6 +46,7 @@ def get_request_json():
 
         return render_template('chat4o.html', question=question, res=str(res))
     return render_template('chat4o.html', question=0)
+
 
 if __name__ == '__main__':
     server.run(debug=True, host='0.0.0.0', port=5000)

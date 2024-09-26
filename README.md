@@ -1,6 +1,7 @@
 # Python Flask Chatbot Web-App using OpenAI API
 
 ## Requirements
+> python 3.9 \
 > pip install --no-cache-dir -r requirements.txt
 
 
@@ -11,6 +12,10 @@
 ## /static & /templates
 /static --- customized static resources (customized CSS & JavaScript files)\
 /templates --- HTML template files, used together with Backend framework
+
+
+## /config.json (to be customized and placed in working dir)
+A dict of OPENAI_API_KEY & SYSTEM_PROMPT
 
 
 ## main.py
