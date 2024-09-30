@@ -29,9 +29,22 @@ For building image of this project (during building: use --build-arg OPENAI_API_
 ## chatbot-deployment.yaml & chatbot-service.yaml
 Deployment and service configurations for the k8s cluster, to run a k8s cluster of this project
 
-to set docker hub secret for k8s:
+#### Implement k8s microservices:
+> kubectl apply -f chatbot-deployment.yaml\
+> kubectl apply -f chatbot-service.yaml
+
+#### Check pods & services:
+> kubectl get pods\
+> kubectl get services
+
+#### Delete k8s microservices:
+> kubectl delete -f chatbot-service.yaml\
+> kubectl delete -f chatbot-deployment.yaml
+
+#### How to set docker hub secret for k8s:
 >kubectl create secret docker-registry my-dockerhub-secret-name \
   --docker-server=https://index.docker.io/v1/ \
   --docker-username=myusername \
   --docker-password=mypassword \
   --docker-email=myemail@example.com
+
